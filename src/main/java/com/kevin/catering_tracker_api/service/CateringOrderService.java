@@ -3,6 +3,9 @@ package com.kevin.catering_tracker_api.service;
 import com.kevin.catering_tracker_api.model.CateringOrder;
 import com.kevin.catering_tracker_api.repository.CateringOrderRepository;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -15,7 +18,12 @@ public class CateringOrderService {
         return cateringOrderRepository.findAll();
     }
     public CateringOrder createOrder(CateringOrder cateringOrder) {
+        if(cateringOrder.getNumberOfPeople() == null || cateringOrder.getNumberOfPeople() <= 0){
+            throw new IllegalArgumentException("Number of people must be greater than 0");
+        }
         return cateringOrderRepository.save(cateringOrder);
+
+
     }
     public CateringOrder getOrderByID(Long id) {
         return cateringOrderRepository.findById(id)
@@ -43,6 +51,12 @@ public class CateringOrderService {
                 .orElseThrow(() -> new RuntimeException("Order not found"));
 
         cateringOrderRepository.delete(existingOrder);
+    }
+    public List<CateringOrder> getOrdersByPickupDate(LocalDate date){
+        LocalDateTime start = date.atStartOfDay();
+        LocalDateTime end = date.atTime(23, 59, 59);
+
+        return cateringOrderRepository.findByPickupDateBetween(start, end);
     }
 
 }
