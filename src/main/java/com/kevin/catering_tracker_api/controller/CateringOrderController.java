@@ -3,6 +3,8 @@ package com.kevin.catering_tracker_api.controller;
 import com.kevin.catering_tracker_api.model.CateringOrder;
 import com.kevin.catering_tracker_api.service.CateringOrderService;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -13,6 +15,10 @@ public class CateringOrderController {
 
     public CateringOrderController(CateringOrderService cateringOrderService) {
         this.cateringOrderService = cateringOrderService;
+    }
+    @GetMapping("/date/{date}")
+    public List<CateringOrder> getOrdersByPickupDate(@PathVariable LocalDate date){
+        return cateringOrderService.getOrdersByPickupDate(date);
     }
 
     @GetMapping
