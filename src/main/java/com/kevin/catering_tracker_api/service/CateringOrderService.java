@@ -56,7 +56,8 @@ public class CateringOrderService {
         LocalDateTime start = date.atStartOfDay();
         LocalDateTime end = date.atTime(23, 59, 59);
 
-        return cateringOrderRepository.findByPickupDateBetween(start, end);
+        return cateringOrderRepository.findByPickupDateBetweenOrdersByPickupDateAsc(start, end);
     }
+
 
 }
