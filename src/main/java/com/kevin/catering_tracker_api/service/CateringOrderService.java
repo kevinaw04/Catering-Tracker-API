@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -54,7 +55,7 @@ public class CateringOrderService {
     }
     public List<CateringOrder> getOrdersByPickupDate(LocalDate date){
         LocalDateTime start = date.atStartOfDay();
-        LocalDateTime end = date.atTime(23, 59, 59);
+        LocalDateTime end = date.atTime(LocalTime.MAX);
 
         return cateringOrderRepository.findByPickupDateBetweenOrdersByPickupDateAsc(start, end);
     }
