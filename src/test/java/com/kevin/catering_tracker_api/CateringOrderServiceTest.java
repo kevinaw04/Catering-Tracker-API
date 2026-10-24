@@ -108,13 +108,13 @@ public class CateringOrderServiceTest {
         order.setCustomerName("test");
         order.setPickupDate(LocalDateTime.of(2026, 9, 20, 7, 30));
 
-        when(repository.findByPickupDateBetweenOrdersByPickupDateAsc(start, end)).thenReturn(List.of(order));
+        when(repository.findByPickupDateBetweenOrderByPickupDateAsc(start, end)).thenReturn(List.of(order));
 
         List<CateringOrder> result = service.getOrdersByPickupDate(date);
 
         assertEquals(1, result.size());
         assertEquals(order, result.get(0));
 
-        verify(repository).findByPickupDateBetweenOrdersByPickupDateAsc(start, end);
+        verify(repository).findByPickupDateBetweenOrderByPickupDateAsc(start, end);
     }
 }

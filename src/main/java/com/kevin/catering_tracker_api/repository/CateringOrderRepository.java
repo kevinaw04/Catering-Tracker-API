@@ -6,5 +6,5 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface CateringOrderRepository extends JpaRepository<CateringOrder, Long> {
-    List<CateringOrder> findByPickupDateBetweenOrdersByPickupDateAsc(LocalDateTime start, LocalDateTime end);
+    List<CateringOrder> findByPickupDateBetweenOrderByPickupDateAsc(LocalDateTime start, LocalDateTime end);
 }
