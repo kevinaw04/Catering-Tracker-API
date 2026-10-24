@@ -2,7 +2,6 @@ package com.kevin.catering_tracker_api.controller;
 
 import com.kevin.catering_tracker_api.model.CateringOrder;
 import com.kevin.catering_tracker_api.service.CateringOrderService;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
