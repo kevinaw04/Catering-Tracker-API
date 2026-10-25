@@ -33,3 +33,6 @@ build/
 .vscode/
 # macOS metadata
 .DS_Store
+# Build logs
+build.log
+*.log
