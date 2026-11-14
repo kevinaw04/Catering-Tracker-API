@@ -8,7 +8,7 @@ Build a fast, dependable internal tool for Gutbusters Breakfast cashiers to mana
 
 1. A customer places an order in person or over the phone.
 2. A cashier records the customer contact details, order, number of people, pickup date and time, and payment status.
-3. If the customer calls or vi****sits later to make changes, **any authorized cashier** can find and edit the same order; the original cashier need not be present.
+3. If the customer calls or visits later to make changes, **any authorized cashier** can find and edit the same order; the original cashier need not be present.
 4. On pickup day, an authorized cashier can view the order, confirm or update payment status, and mark it completed.
 
 Avoid designing for speculative high-concurrency scenarios that are unlikely in this small cashier workflow. Basic data integrity is important, but advanced locking and orchestration are not MVP requirements.
