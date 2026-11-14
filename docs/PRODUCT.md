@@ -1,4 +1,4 @@
-# Catering Tracker — Product Requirements and Scope
+****# Catering Tracker — Product Requirements and Scope
 
 ## Product purpose
 
@@ -8,7 +8,7 @@ Build a fast, dependable internal tool for Gutbusters Breakfast cashiers to mana
 
 1. A customer places an order in person or over the phone.
 2. A cashier records the customer contact details, order, number of people, pickup date and time, and payment status.
-3. If the customer calls or visits later to make changes, **any authorized cashier** can find and edit the same order; the original cashier need not be present.
+3. If the customer calls or vi****sits later to make changes, **any authorized cashier** can find and edit the same order; the original cashier need not be present.
 4. On pickup day, an authorized cashier can view the order, confirm or update payment status, and mark it completed.
 
 Avoid designing for speculative high-concurrency scenarios that are unlikely in this small cashier workflow. Basic data integrity is important, but advanced locking and orchestration are not MVP requirements.
@@ -24,11 +24,51 @@ Avoid designing for speculative high-concurrency scenarios that are unlikely in 
 - Work well on a cashier's desktop or tablet; remain usable on a phone.
 - Keep workflows efficient and readable without decorative dashboard clutter.
 
-## Design direction
+## Design direction — Approved
 
-Modern, restrained, polished operations software—**not** a dated restaurant dashboard. Make the searchable order list the primary interface. Prefer clear typography, good spacing, subtle status colors, and simple forms. Avoid huge statistic cards, gradients, excessive animation, unnecessary navigation, and invented financial KPIs.
+Catering Tracker will use a modern, minimalist interface combining the visual precision of Linear with the practical usability of contemporary POS and operations software.
 
-The initial design stage should produce reviewable concepts **before** the agent builds the complete integrated interface. Use fictional placeholder data only in clearly identified previews, never in live operational screens.
+### Visual identity
+- Modern SaaS aesthetic with refined typography, subtle borders, consistent spacing, and restrained accent colors.
+- Orders are the primary focus, not decorative dashboard statistics.
+- Avoid gradients, excessive shadows, oversized cards, unnecessary animations, and dated enterprise software styling.
+- Keep navigation minimal and make important actions immediately discoverable.
+
+### Layout and workflow
+- Desktop: compact, easily scannable order management interface.
+- Tablet: comfortable touch targets without sacrificing information density.
+- Mobile: responsive, simplified layout for occasional use.
+- Support quick searching, pickup-date filtering, viewing details, and editing orders.
+- Prefer an inline detail panel or slide-over editor when appropriate.
+- Clearly distinguish paid/unpaid and completed/pending statuses.
+
+### Light and dark mode
+- Support both light and dark themes.
+- Respect the system preference initially, with light mode as the fallback.
+- Provide a visible theme toggle in the top navigation.
+- Persist the user's selection in browser local storage.
+- Use shared design tokens to maintain consistent styling across both themes.
+- Maintain readable contrast and accessible controls in either theme.
+
+### Initial design exploration
+Before integrating the frontend with the backend, produce three distinct, browser-previewable concepts using fictional, clearly labeled sample data.
+
+The concepts should explore different information layouts, not merely different colors:
+
+1. Compact order table with a slide-over detail panel.
+2. Split-pane interface with an order list and persistent details panel.
+3. Hybrid operations interface balancing compact order rows with prominent quick actions.
+
+All three must follow the approved visual direction and support light and dark mode.
+
+The developer must approve one concept before full implementation.
+
+### Constraints
+- Preserve existing Spring Boot API contracts.
+- Do not introduce pricing, payments, analytics, or unsupported features.
+- Do not use real customer information in prototypes.
+- Prioritize cashier efficiency and usability over visual effects.
+- The frontend must remain straightforward to maintain after deployment.
 
 ## Scope boundaries
 
