@@ -21,12 +21,17 @@ Avoid designing for speculative high-concurrency scenarios that are unlikely in 
 - Allow every authorized cashier to edit any order. `cashierName` is a recorded field, **not** a permissions boundary.
 - Mark orders paid/unpaid and completed/incomplete through the existing update mechanism.
 - Show clear success, validation, loading, empty, and failure states.
-- Work well on a cashier's desktop or tablet; remain usable on a phone.
+- Prioritize smartphones and tablets with a mobile-first, touch-friendly interface practical for restaurant use; support desktop as a secondary device.
 - Keep workflows efficient and readable without decorative dashboard clutter.
 
 ## Design direction — Approved
 
 Catering Tracker will use a modern, minimalist interface combining the visual precision of Linear with the practical usability of contemporary POS and operations software.
+
+### Primary devices
+- Approximately 90% of expected usage at Gutbusters will be on smartphones and tablets.
+- Design mobile-first, with touch-friendly controls and workflows practical in a restaurant environment.
+- Desktop support is secondary.
 
 ### Visual identity
 - Modern SaaS aesthetic with refined typography, subtle borders, consistent spacing, and restrained accent colors.
@@ -35,12 +40,13 @@ Catering Tracker will use a modern, minimalist interface combining the visual pr
 - Keep navigation minimal and make important actions immediately discoverable.
 
 ### Layout and workflow
-- Desktop: compact, easily scannable order management interface.
-- Tablet: comfortable touch targets without sacrificing information density.
-- Mobile: responsive, simplified layout for occasional use.
-- Support quick searching, pickup-date filtering, viewing details, and editing orders.
-- Prefer an inline detail panel or slide-over editor when appropriate.
+- **Selected layout: Concept C — Hybrid Operations**, combining compact order rows with directly accessible quick actions.
+- Preserve prominent pickup times, customer information, order summaries, search, and pickup-date filtering in the main order list.
+- Smartphones and tablets: prioritize comfortable touch targets, readability, and efficient cashier workflows. Desktop: retain a compact, easily scannable interface.
+- Viewing: tapping an order opens a read-only right-side panel on sufficiently wide screens; phones and narrow tablets use a full-screen details view.
+- Editing: a visible pencil icon on each order opens a dedicated full-page editing screen. An Edit action is also available from the details view.
 - Clearly distinguish paid/unpaid and completed/pending statuses.
+- Keep paid/unpaid and completed/pending actions directly accessible from the order list. Require confirmation before updating either status and offer an Undo option afterward.
 
 ### Light and dark mode
 - Support both light and dark themes.
@@ -50,18 +56,18 @@ Catering Tracker will use a modern, minimalist interface combining the visual pr
 - Use shared design tokens to maintain consistent styling across both themes.
 - Maintain readable contrast and accessible controls in either theme.
 
-### Initial design exploration
-Before integrating the frontend with the backend, produce three distinct, browser-previewable concepts using fictional, clearly labeled sample data.
+### Initial design exploration — Completed
+Three distinct, browser-previewable concepts were produced using fictional, clearly labeled sample data before backend integration.
 
-The concepts should explore different information layouts, not merely different colors:
+The concepts explored different information layouts, not merely different colors:
 
-1. Compact order table with a slide-over detail panel.
-2. Split-pane interface with an order list and persistent details panel.
-3. Hybrid operations interface balancing compact order rows with prominent quick actions.
+1. **Concept A — Precision Table:** compact order table with a slide-over detail panel.
+2. **Concept B — Split Workspace:** split-pane interface with an order list and persistent details panel.
+3. **Concept C — Hybrid Operations:** compact order rows with prominent quick actions — **selected and approved**.
 
-All three must follow the approved visual direction and support light and dark mode.
+All three follow the approved visual direction and support light and dark mode. Preserve the existing prototypes for reference.
 
-The developer must approve one concept before full implementation.
+Hybrid Operations is the approved direction for frontend implementation, with the finalized viewing, editing, and status safeguards documented above. This design selection does not imply those behaviors or backend integration are already implemented.
 
 ### Constraints
 - Preserve existing Spring Boot API contracts.
