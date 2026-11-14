@@ -1,4 +1,4 @@
-****# Catering Tracker — Product Requirements and Scope
+# Catering Tracker — Product Requirements and Scope
 
 ## Product purpose
 
