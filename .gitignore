@@ -36,3 +36,5 @@ build/
 # Build logs
 build.log
 *.log
+#Environment Variable
+.env.local
