@@ -1,0 +1,204 @@
+/* Refinements are scoped to the selected concept; A and B retain their previews. */
+.concept-hybrid-operations .operation-main {
+  display: grid;
+  position: relative;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  padding: 12px 14px;
+}
+.concept-hybrid-operations .operation-view {
+  display: grid;
+  grid-column: 1;
+  grid-row: 1;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 6px;
+  align-self: stretch;
+  width: 100%;
+  min-height: 44px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  min-width: 0;
+}
+.concept-hybrid-operations .operation-view:hover .operation-customer-title { color: var(--accent); }
+.concept-hybrid-operations .operation-time { grid-row: auto; display: flex; flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; padding: 0 10.5rem 0 0; border: 0; justify-content: flex-start; }
+.concept-hybrid-operations .operation-time strong { font-size: 1.0625rem; line-height: 1.4; font-weight: 600; letter-spacing: 0; }
+.concept-hybrid-operations .operation-time > span { font-size: 0.75rem; }
+.concept-hybrid-operations .operation-customer { display: flex; gap: 3px; min-width: 0; min-height: 44px; padding-right: 56px; }
+.concept-hybrid-operations .operation-customer-title { font-size: 1rem; font-weight: 600; gap: 4px 8px; line-height: 1.4; overflow-wrap: anywhere; }
+.concept-hybrid-operations .operation-phone { color: var(--muted); font-size: 0.75rem; }
+.concept-hybrid-operations .operation-summary { font-size: 0.875rem; line-height: 1.4; white-space: normal; display: block; -webkit-line-clamp: unset; overflow: visible; overflow-wrap: anywhere; }
+.concept-hybrid-operations .operation-meta { font-size: 0.75rem; line-height: 1.5; }
+.concept-hybrid-operations .operation-statuses { position: absolute; z-index: 1; top: 12px; right: 14px; display: flex; gap: 6px; min-height: 20px; align-items: center; }
+.concept-hybrid-operations .operation-statuses .status-badge { font-size: 0.75rem; line-height: 16px; padding: 2px 5px; }
+.concept-hybrid-operations .operation-tools { position: absolute; top: calc(24px + 1rem); right: 14px; display: flex; align-items: center; }
+.concept-hybrid-operations .icon-button, .hybrid-details-dialog .icon-button, .undo-notice .icon-button { min-width: 44px; width: 44px; height: 44px; }
+.concept-hybrid-operations .edit-order { color: var(--accent); background: var(--surface); border-color: var(--border-strong); }
+.concept-hybrid-operations .operation-actions { grid-column: 1; grid-row: 2; width: 100%; border-top: 1px solid var(--border); padding-top: 6px; }
+.concept-hybrid-operations .quick-action { min-width: 44px; flex: 1; min-height: 44px; padding: 6px 8px; font-size: 0.875rem; background: var(--surface); border-color: var(--border-strong); }
+.concept-hybrid-operations .operations-heading { font-size: 0.75rem; gap: 12px; }
+.concept-hybrid-operations .operations-heading > span:last-child { max-width: 150px; }
+.concept-hybrid-operations { padding-bottom: 120px; }
+/* Inputs at 16px avoid automatic focus zoom on phones. */
+.concept-hybrid-operations .search-field { min-height: 48px; }
+.concept-hybrid-operations .search-field input { font-size: 1rem; min-height: 46px; }
+.concept-hybrid-operations .date-field input { min-height: 46px; font-size: 1rem; }
+.concept-hybrid-operations .button, .concept-hybrid-operations .text-button { min-height: 44px; }
+.concept-hybrid-operations .order-toolbar { scroll-margin-top: 12px; }
+.hybrid-details-dialog {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--text);
+  background: var(--surface);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.hybrid-details-dialog::backdrop { background: var(--overlay); }
+body:has(.hybrid-details-dialog[open]) { overflow: hidden; }
+.hybrid-details-dialog .panel-heading { position: sticky; top: 0; z-index: 1; background: var(--surface); padding: 12px 20px; }
+.hybrid-details-dialog .panel-heading h2 { font-size: 0.9375rem; }
+.hybrid-details-dialog .order-details { padding: 24px 20px max(28px, env(safe-area-inset-bottom)); }
+.hybrid-details-dialog .detail-section h3 { font-size: 0.875rem; }
+.hybrid-details-dialog .detail-section p { font-size: 0.9375rem; }
+.hybrid-details-dialog .customer-contact { font-size: 0.9375rem; }
+.hybrid-details-dialog .status-badge { font-size: 0.75rem; }
+.hybrid-details-dialog .detail-kicker, .hybrid-details-dialog .record-meta { font-size: 0.75rem; }
+.hybrid-details-dialog .details-edit { min-height: 48px; width: 100%; font-size: 0.875rem; }
+.hybrid-details-dialog .pickup-summary > div { padding: 0 14px; }
+.inline-confirmation { display: grid; grid-template-rows: 0fr; visibility: hidden; transition: grid-template-rows 180ms ease, visibility 0s 180ms; }
+.inline-confirmation[data-open='true'] { grid-template-rows: 1fr; visibility: visible; transition-delay: 0s; }
+.inline-confirmation-clip { min-height: 0; overflow: hidden; border-radius: 0 0 var(--radius) var(--radius); }
+.concept-hybrid-operations .status-confirmation { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 14px; border-top: 1px solid var(--border); color: var(--text); background: var(--subtle); }
+.status-confirmation h3 { font-size: 0.8125rem; font-weight: 500; line-height: 1.4; }
+.confirmation-copy { flex: 1 1 100px; }
+.confirmation-actions { display: flex; flex-wrap: wrap; flex: 0 1 auto; gap: 8px; margin: 0; }
+.confirmation-actions .button { flex: 1; min-width: 76px; min-height: 44px; padding: 6px 10px; font-size: 0.8125rem; }
+.undo-notice { position: fixed; bottom: max(16px, env(safe-area-inset-bottom)); left: 16px; right: 16px; z-index: 10; display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; max-width: 650px; margin: 0 auto; padding: 12px 14px; border: 1px solid var(--border-strong); border-radius: 10px; background: var(--surface-raised); color: var(--text); box-shadow: 0 3px 12px #00000010; }
+.undo-notice p { flex: 1 1 180px; font-size: 0.8125rem; line-height: 1.5; }
+.undo-notice .button { min-height: 44px; font-size: 0.875rem; }
+.full-page-editor { max-width: 900px; margin: 0 auto; }
+.full-page-editor .editor-back { position: sticky; top: 0; z-index: 2; width: 100%; padding: 12px 0; background: var(--bg); font-size: 0.875rem; margin-bottom: 22px; }
+.editor-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.editor-heading h1:focus { outline: none; }
+.editor-disclaimer { margin: 18px 0 28px; padding: 14px 16px; border: 1px solid var(--border); background: var(--subtle); border-radius: 7px; color: var(--secondary); font-size: 0.875rem; }
+.full-page-editor fieldset { min-width: 0; margin: 0 0 28px; border: 0; padding: 0; }
+.full-page-editor legend { padding: 0; font-size: 1.0625rem; font-weight: 500; margin-bottom: 16px; }
+.editor-fields { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.editor-fields label { display: flex; flex-direction: column; min-width: 0; gap: 7px; color: var(--secondary); font-size: 0.875rem; }
+.editor-fields input, .editor-fields textarea { width: 100%; min-height: 48px; font-size: 1rem; border-color: var(--border-strong); padding: 12px; scroll-margin-top: 16px; }
+.editor-fields input[readonly] { background: var(--subtle); color: var(--muted); }
+.editor-fields textarea { resize: vertical; line-height: 1.6; }
+.metadata-hint { color: var(--muted); font-size: 0.75rem; margin-bottom: 14px; }
+.editor-bottom { display: flex; gap: 16px; flex-direction: column; align-items: flex-start; border-top: 1px solid var(--border); padding: 20px 0 30px; }
+.editor-bottom > span { font-size: 0.8125rem; color: var(--muted); }
+.editor-bottom .button { font-size: 0.875rem; }
+@media (min-width: 600px) {
+  .editor-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .editor-fields.pickup-fields { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .editor-fields.single-column { grid-template-columns: minmax(0, 1fr); }
+  .editor-bottom { flex-direction: row; align-items: center; justify-content: space-between; }
+  .concept-hybrid-operations .operation-view { grid-template-columns: 90px minmax(0, 1fr); gap: 14px; }
+  .concept-hybrid-operations .operation-time { flex-direction: column; gap: 2px; padding: 0; }
+  .concept-hybrid-operations .operation-customer { padding-right: 56px; }
+  .concept-hybrid-operations .operation-customer-title { padding-right: 7rem; }
+  .concept-hybrid-operations .operation-time strong { font-size: 1.25rem; }
+  .concept-hybrid-operations .operation-actions { padding-left: 104px; }
+  .concept-hybrid-operations .quick-action { flex: 0 1 180px; }
+  .status-confirmation h3 { font-size: 0.875rem; }
+  .concept-hybrid-operations .operations-heading > span:last-child { max-width: none; }
+}
+@media (min-width: 1024px) {
+  .hybrid-details-dialog { inset: 0 0 0 auto; width: 480px; margin: 0 0 0 auto; border-left: 1px solid var(--border); }
+}
+@media (min-width: 1200px) {
+  .concept-hybrid-operations .operation-actions { justify-content: flex-end; padding-left: 104px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .inline-confirmation { transition: none; }
+}
+
+/* Shared controls and chrome change only while Concept C is active. */
+:root:has(.concept-hybrid-operations) :is(.button, .icon-button, .theme-toggle) {
+  border-radius: 8px;
+  border-color: var(--border-strong);
+  transition: background-color 140ms ease-out, border-color 140ms ease-out, color 140ms ease-out;
+}
+:root:has(.concept-hybrid-operations) :is(.button, .icon-button, .theme-toggle):hover { background: var(--hover); }
+:root:has(.concept-hybrid-operations) :is(.button, .icon-button, .theme-toggle):active { background: var(--pressed); }
+:root:has(.concept-hybrid-operations) .button { font-size: .875rem; }
+:root:has(.concept-hybrid-operations) .button.primary {
+  color: var(--primary-text);
+  background: var(--primary);
+  border-color: transparent;
+}
+:root:has(.concept-hybrid-operations) .button.primary:hover { background: var(--primary-hover); }
+:root:has(.concept-hybrid-operations) .button.primary:active { background: var(--primary-pressed); }
+/* Keep the edit target intact while removing its permanent enclosure. */
+:root:has(.concept-hybrid-operations) .edit-order {
+  color: var(--accent);
+  background: transparent;
+  border-color: transparent;
+}
+:root:has(.concept-hybrid-operations) .edit-order:hover { color: var(--accent-hover); background: var(--hover); }
+:root:has(.concept-hybrid-operations) .edit-order:active { color: var(--accent-pressed); background: var(--pressed); }
+:root:has(.concept-hybrid-operations) .edit-order:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+:root:has(.concept-hybrid-operations) :is(.search-field, .date-field) { border-color: var(--border-strong); border-radius: 8px; min-width: 0; }
+:root:has(.concept-hybrid-operations) :is(.search-field, .date-field):focus-within { border-color: var(--accent); }
+:root:has(.concept-hybrid-operations) :is(.status-badge, .order-id, .result-count, .sample-date, .section-label, .detail-kicker, .small) {
+  font-size: .75rem;
+  letter-spacing: 0;
+}
+:root:has(.concept-hybrid-operations) .status-badge { line-height: 1rem; }
+:root:has(.concept-hybrid-operations) .status-badge.paid.positive { color: var(--green); background: var(--green-bg); }
+:root:has(.concept-hybrid-operations) .status-badge.paid.pending { color: var(--amber); background: var(--amber-bg); }
+:root:has(.concept-hybrid-operations) .status-badge.completed.positive { color: var(--complete); background: var(--complete-bg); }
+:root:has(.concept-hybrid-operations) .status-badge.completed.pending { color: var(--secondary); background: var(--subtle); }
+:root:has(.concept-hybrid-operations) .brand { font-weight: 600; }
+:root:has(.concept-hybrid-operations) .eyebrow { font-weight: 500; letter-spacing: .5px; }
+.concept-hybrid-operations .operation-row { container-type: inline-size; }
+.concept-hybrid-operations .operation-row:hover { border-color: var(--border); }
+.concept-hybrid-operations .operation-row.expanded { border-color: var(--accent); }
+.concept-hybrid-operations .operations-heading > span:first-child { text-transform: none; letter-spacing: 0; font-weight: 500; }
+.concept-hybrid-operations .operation-actions { gap: 8px; }
+.concept-hybrid-operations .operation-view:focus-visible { outline-offset: 2px; }
+.concept-hybrid-operations .confirmation-actions .button:focus-visible { outline-offset: -4px; }
+.concept-hybrid-operations .confirmation-copy { min-width: 0; overflow-wrap: anywhere; }
+.concept-hybrid-operations .confirmation-actions { max-width: 100%; }
+.concept-hybrid-operations .date-controls { min-width: 0; flex-wrap: wrap; }
+.concept-hybrid-operations .date-field > span { font-size: .75rem; }
+.concept-hybrid-operations .date-field input { width: 9rem; }
+.concept-hybrid-operations .editor-fields { gap: 16px; }
+.concept-hybrid-operations .editor-fields label { gap: 8px; }
+.concept-hybrid-operations .editor-heading { flex-wrap: wrap; }
+.hybrid-details-dialog :is(.detail-statuses, .record-meta > div) { flex-wrap: wrap; }
+.hybrid-details-dialog .pickup-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.hybrid-details-dialog .pickup-summary strong { font-size: 1.4375rem; letter-spacing: 0; }
+.hybrid-details-dialog .pickup-summary .section-label { overflow-wrap: anywhere; }
+.undo-notice { overflow-wrap: anywhere; }
+.undo-notice p { min-width: 0; }
+@media (max-width: 699px) {
+  .concept-hybrid-operations .page-heading { margin-bottom: 24px; }
+}
+/* With enlarged text, let badges take their own top line before they can
+   collide with the time. At the default text size, compact cards stay intact. */
+@container (max-width: 16rem) {
+  .concept-hybrid-operations .operation-statuses { position: static; grid-column: 1; grid-row: 1; justify-self: end; flex-wrap: wrap; justify-content: flex-end; }
+  .concept-hybrid-operations .operation-view { grid-row: 2; grid-template-columns: minmax(0, 1fr); }
+  .concept-hybrid-operations .operation-time { flex-direction: row; padding-right: 56px; }
+  .concept-hybrid-operations .operation-customer-title { padding-right: 0; }
+  .concept-hybrid-operations .operation-tools { position: static; grid-column: 1; grid-row: 2; justify-self: end; align-self: start; z-index: 1; }
+  .concept-hybrid-operations .operation-actions { grid-row: 3; padding-left: 0; flex-wrap: wrap; }
+  .concept-hybrid-operations .quick-action { flex: 1 1 100px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root:has(.concept-hybrid-operations) :is(.button, .icon-button, .theme-toggle) { transition: none; }
+}

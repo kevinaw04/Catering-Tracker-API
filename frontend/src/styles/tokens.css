@@ -1,0 +1,48 @@
+:root {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color-scheme: light;
+  --bg: #f8f9fb; --surface: #fff; --surface-raised: #fff; --subtle: #f5f6f8;
+  --hover: #f0f2f6; --selected: #edf1fc; --text: #222731; --secondary: #5e6675;
+  --muted: #697180; --border: #e0e3e9; --border-strong: #c8ced9;
+  --accent: #4259b9; --accent-hover: #3349a3; --accent-text: #fff;
+  --green: #287354; --green-bg: #edf7f1; --amber: #88631c; --amber-bg: #faf4e7;
+  --overlay: #151b2a66; --radius: 8px;
+  font-synthesis: none; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased;
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #141619; --surface: #1b1e23; --surface-raised: #20242a; --subtle: #20242a;
+  --hover: #262b33; --selected: #252f4b; --text: #eceef3; --secondary: #b3bac7;
+  --muted: #a1aab9; --border: #323741; --border-strong: #4b5361;
+  --accent: #a1b2ff; --accent-hover: #b8c5ff; --accent-text: #172042;
+  --green: #8bceaa; --green-bg: #21392e; --amber: #dfbe77; --amber-bg: #393123;
+  --overlay: #05070b99;
+}
+
+/* Concept C palette iteration. A/B keep their original tokens.
+   Direction: calm, exact, approachable; pickup times carry the hierarchy.
+   Polish informed by unslop by Damir Sokolovsky (https://x.com/heydamir), CC BY 4.0. */
+:root:has(.concept-hybrid-operations) {
+  --bg: #f7f7f6; --surface: #fff; --surface-raised: #f0f1f2; --subtle: #f0f1f2;
+  --hover: #f0f1f2; --pressed: #e4e7ea; --selected: #eef0fa;
+  --text: #24272c; --secondary: #50565f; --muted: #666b73;
+  --border: #dde0e3; --border-strong: #858b94;
+  --accent: #464c9a; --accent-hover: #3c4288; --accent-pressed: #333978;
+  --primary: #24272c; --primary-hover: #30343b; --primary-pressed: #191b1e; --primary-text: #fff;
+  --green: #246b4a; --green-bg: #edf6f0;
+  --amber: #805b19; --amber-bg: #fbf3df;
+  --complete: #345b8c; --complete-bg: #edf2f9;
+  --overlay: #14161966;
+}
+:root[data-theme='dark']:has(.concept-hybrid-operations) {
+  --bg: #141619; --surface: #191b1e; --surface-raised: #22262b; --subtle: #22262b;
+  --hover: #282d34; --pressed: #303740; --selected: #282b42;
+  --text: #eceef1; --secondary: #bbc0c8; --muted: #a0a5ad;
+  --border: #343940; --border-strong: #717984;
+  --accent: #adb3f6; --accent-hover: #bfc4ff; --accent-pressed: #9da4e7;
+  --primary: #eceef1; --primary-hover: #fff; --primary-pressed: #d8dce2; --primary-text: #191b1e;
+  --green: #91c9a5; --green-bg: #20372a;
+  --amber: #e1be72; --amber-bg: #3a311f;
+  --complete: #a4bedf; --complete-bg: #243247;
+  --overlay: #05070b99;
+}
